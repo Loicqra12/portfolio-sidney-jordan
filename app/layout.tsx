@@ -14,13 +14,14 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Votre Nom - Portfolio',
-  description: 'Développeur passionné, créateur de solutions innovantes',
-  keywords: 'portfolio, développeur, React, Next.js, projets',
-  authors: [{ name: 'Votre Nom' }],
+  title: 'Sir Sidney Jordan - Portfolio',
+  description: 'Portfolio professionnel de Sir Sidney Jordan - Développeur Full Stack, Entrepreneur & Think Tank',
+  keywords: 'portfolio, développeur, React, Next.js, entrepreneur, africa, tech',
+  authors: [{ name: 'Sir Sidney Jordan' }],
+  metadataBase: new URL('https://portfolio-sidney-jordan.vercel.app'),
   openGraph: {
-    title: 'Votre Nom - Portfolio',
-    description: 'Développeur passionné, créateur de solutions innovantes',
+    title: 'Sir Sidney Jordan - Portfolio',
+    description: 'Portfolio professionnel de Sir Sidney Jordan - Développeur Full Stack, Entrepreneur & Think Tank',
     type: 'website',
   },
 }
