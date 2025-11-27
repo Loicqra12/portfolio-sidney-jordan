@@ -16,7 +16,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'Sir Sidney Jordan - Portfolio',
-  description: 'Portfolio professionnel de Sir Sidney Jordan - Développeur Full Stack, Entrepreneur & Think Tank',
+  description: 'Développeur Full-Stack & Entrepreneur. Expert en React, Next.js, Flutter et solutions digitales innovantes.',
   keywords: 'portfolio, développeur, React, Next.js, entrepreneur, africa, tech',
   authors: [{ name: 'Sir Sidney Jordan' }],
   metadataBase: new URL('https://portfolio-sidney-jordan.vercel.app'),
@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     title: 'Sir Sidney Jordan - Portfolio',
     description: 'Portfolio professionnel de Sir Sidney Jordan - Développeur Full Stack, Entrepreneur & Think Tank',
     type: 'website',
+  },
+  icons: {
+    icon: '/favicon.png',
   },
 }
 
@@ -41,7 +44,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-
