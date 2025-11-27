@@ -29,7 +29,7 @@ const Experience = () => {
   }
 
   return (
-    <section id="experience" className="section-padding bg-gray-50">
+    <section id="experience" className="section-padding bg-transparent">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ const Experience = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Expériences & Réalisations</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-400 max-w-2xl mx-auto">
             Mon parcours entrepreneurial, mes participations aux hackathons et mes collaborations professionnelles
           </p>
         </motion.div>
@@ -72,7 +72,7 @@ const Experience = () => {
                   transition: { duration: 0.3 }
                 }}
                 viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-2xl bg-white/80 backdrop-blur-sm border border-white/40 shadow-xl hover:shadow-2xl transition-all duration-500"
+                className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-500"
               >
                 {/* Effet de particules en arrière-plan */}
                 <motion.div
@@ -110,7 +110,7 @@ const Experience = () => {
                   </div>
                   
                   <div className="mb-4">
-                    <p className="text-gray-600 text-sm mb-2">{formatDate(exp.startDate)} - {exp.endDate ? formatDate(exp.endDate) : 'Présent'}</p>
+                    <p className="text-gray-400 text-sm mb-2">{formatDate(exp.startDate)} - {exp.endDate ? formatDate(exp.endDate) : 'Présent'}</p>
                     <p className="text-gray-700">{exp.description}</p>
                   </div>
                   
@@ -156,7 +156,7 @@ const Experience = () => {
                   transition: { duration: 0.2 }
                 }}
                 viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+                className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md shadow-xl hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] transition-all duration-300 border border-white/20"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-accent-500/5 to-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative p-6">
@@ -171,7 +171,7 @@ const Experience = () => {
                   </div>
                   
                   <div className="mb-4">
-                    <p className="text-gray-600 text-sm mb-2">{formatDate(exp.startDate)}</p>
+                    <p className="text-gray-400 text-sm mb-2">{formatDate(exp.startDate)}</p>
                     <p className="text-gray-700 text-sm">{exp.description}</p>
                   </div>
                   
@@ -215,7 +215,7 @@ const Experience = () => {
                   transition: { duration: 0.2 }
                 }}
                 viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+                className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md shadow-xl hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] transition-all duration-300 border border-white/20"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative p-6">
@@ -230,7 +230,7 @@ const Experience = () => {
                   </div>
                   
                   <div className="mb-4">
-                    <p className="text-gray-600 text-sm mb-2">{formatDate(exp.startDate)} - {exp.endDate ? formatDate(exp.endDate) : 'Présent'}</p>
+                    <p className="text-gray-400 text-sm mb-2">{formatDate(exp.startDate)} - {exp.endDate ? formatDate(exp.endDate) : 'Présent'}</p>
                     <p className="text-gray-700">{exp.description}</p>
                   </div>
                   

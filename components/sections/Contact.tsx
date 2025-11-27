@@ -36,7 +36,7 @@ const Contact = () => {
       icon: Github,
       label: 'GitHub',
       href: 'https://github.com/Loicqra12',
-      color: 'hover:text-gray-900'
+      color: 'hover:text-white'
     },
     {
       icon: Linkedin,
@@ -53,7 +53,7 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="section-padding bg-gray-50">
+    <section id="contact" className="section-padding bg-transparent">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -63,7 +63,7 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Contactez-moi</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-400 max-w-2xl mx-auto">
             Une idée de projet ? Une collaboration ? N'hésitez pas à me contacter !
           </p>
         </motion.div>
@@ -105,7 +105,7 @@ const Contact = () => {
                       x: 10,
                       transition: { duration: 0.3 }
                     }}
-                    className="group relative overflow-hidden flex items-center space-x-4 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-white/40 shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="group relative overflow-hidden flex items-center space-x-4 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/40 shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     {/* Effet de particules en arrière-plan */}
                     <motion.div
@@ -129,8 +129,8 @@ const Contact = () => {
                       <info.icon className="text-white" size={20} />
                     </motion.div>
                     <div className="flex-1">
-                      <p className="font-medium text-gray-900 group-hover:text-primary-600 transition-colors">{info.label}</p>
-                      <p className="text-gray-600 group-hover:text-gray-800 transition-colors">{info.value}</p>
+                      <p className="font-medium text-white group-hover:text-primary-600 transition-colors">{info.label}</p>
+                      <p className="text-gray-400 group-hover:text-gray-400 transition-colors">{info.value}</p>
                     </div>
 
                     {/* Particules flottantes */}
@@ -183,7 +183,7 @@ const Contact = () => {
                       transition: { duration: 0.3 }
                     }}
                     whileTap={{ scale: 0.95 }}
-                    className="group relative overflow-hidden w-14 h-14 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-white/40"
+                    className="group relative overflow-hidden w-14 h-14 bg-white/5 backdrop-blur-md rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 border border-white/40"
                     aria-label={social.label}
                   >
                     {/* Effet de particules en arrière-plan */}

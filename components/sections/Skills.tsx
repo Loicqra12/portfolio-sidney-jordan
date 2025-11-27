@@ -16,7 +16,7 @@ const Skills = () => {
   }
 
   return (
-    <section id="skills" className="section-padding bg-gray-50">
+    <section id="skills" className="section-padding bg-transparent">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ const Skills = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Compétences & Certifications</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-400 max-w-2xl mx-auto">
             Mes compétences techniques et mes certifications professionnelles
           </p>
         </motion.div>
@@ -114,7 +114,7 @@ const Skills = () => {
                   transition: { duration: 0.2 }
                 }}
                 viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+                className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md shadow-xl hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] transition-all duration-300 border border-white/20"
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                 <div className="relative p-6">
@@ -129,7 +129,7 @@ const Skills = () => {
                     >
                       <category.icon className="w-7 h-7 text-white" />
                     </motion.div>
-                    <h4 className="text-lg font-bold text-gray-800 group-hover:text-primary-600 transition-colors">
+                    <h4 className="text-lg font-bold text-gray-400 group-hover:text-primary-600 transition-colors">
                       {category.title}
                     </h4>
                   </motion.div>
@@ -147,7 +147,7 @@ const Skills = () => {
                         className="flex items-center"
                       >
                         <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.color} mr-3`}></div>
-                        <span className="text-sm text-gray-600">{skill}</span>
+                        <span className="text-sm text-gray-400">{skill}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -229,7 +229,7 @@ const Skills = () => {
                   transition: { duration: 0.3 }
                 }}
                 viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+                className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md shadow-xl hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] transition-all duration-300 border border-white/20"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-accent-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative p-6 text-center">
@@ -247,10 +247,10 @@ const Skills = () => {
                     />
                   </motion.div>
                   
-                  <h4 className="font-bold mb-2 text-gray-800 group-hover:text-primary-600 transition-colors">
+                  <h4 className="font-bold mb-2 text-gray-400 group-hover:text-primary-600 transition-colors">
                     {cert.title}
                   </h4>
-                  <p className="text-gray-600 text-sm mb-3 font-medium">{cert.issuer}</p>
+                  <p className="text-gray-400 text-sm mb-3 font-medium">{cert.issuer}</p>
                   <p className="text-gray-500 text-xs mb-4">{formatDate(cert.date)}</p>
                   
                   {cert.url && (
