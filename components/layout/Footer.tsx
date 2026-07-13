@@ -11,7 +11,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-transparent border-t border-white/5">
-      <div className="container-custom section-padding">
+      <div className="container-custom py-16">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">Sir Sidney Jordan</h3>
@@ -59,7 +59,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/10 mt-8 pt-8 text-center text-gray-500">
-          <p>&copy; 2024 Sir Sidney Jordan. Tous droits réservés.</p>
+          <p>&copy; 2026 Sir Sidney Jordan. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

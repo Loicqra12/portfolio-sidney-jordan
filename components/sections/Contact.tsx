@@ -56,14 +56,25 @@ const Contact = () => {
     <section id="contact" className="section-padding bg-transparent">
       <div className="container-custom">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.9, ease: 'easeOut' }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Contactez-moi</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-sm font-semibold uppercase tracking-widest text-primary-400 mb-4"
+          >
+            Travaillons ensemble
+          </motion.p>
+          <h2 className="section-title mb-6">
+            <span className="gradient-text animate-gradient">Contactez</span>-moi
+          </h2>
+          <p className="section-subtitle mx-auto">
             Une idée de projet ? Une collaboration ? N'hésitez pas à me contacter !
           </p>
         </motion.div>
@@ -78,7 +89,7 @@ const Contact = () => {
             className="space-y-8"
           >
             <div>
-              <motion.h3 
+              <motion.h3
                 whileHover={{ scale: 1.05 }}
                 className="text-2xl font-bold mb-6 flex items-center"
               >
@@ -92,15 +103,15 @@ const Contact = () => {
                     href={info.href}
                     initial={{ opacity: 0, y: 30, scale: 0.9 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ 
-                      duration: 0.6, 
+                    transition={{
+                      duration: 0.6,
                       delay: index * 0.1,
                       type: "spring",
                       stiffness: 100,
                       damping: 15
                     }}
                     viewport={{ once: true }}
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.02,
                       x: 10,
                       transition: { duration: 0.3 }
@@ -109,11 +120,11 @@ const Contact = () => {
                   >
                     {/* Effet de particules en arrière-plan */}
                     <motion.div
-                      animate={{ 
+                      animate={{
                         rotate: 360,
                         scale: [1, 1.1, 1]
                       }}
-                      transition={{ 
+                      transition={{
                         duration: 20,
                         repeat: Infinity,
                         ease: "linear"
@@ -121,7 +132,7 @@ const Contact = () => {
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100"
                     />
 
-                    <motion.div 
+                    <motion.div
                       whileHover={{ rotate: 360, scale: 1.1 }}
                       transition={{ duration: 0.6 }}
                       className="w-14 h-14 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center shadow-lg"
@@ -135,11 +146,11 @@ const Contact = () => {
 
                     {/* Particules flottantes */}
                     <motion.div
-                      animate={{ 
+                      animate={{
                         y: [-3, 3, -3],
                         x: [-2, 2, -2]
                       }}
-                      transition={{ 
+                      transition={{
                         duration: 2,
                         repeat: Infinity,
                         ease: "easeInOut"
@@ -152,7 +163,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <motion.h3 
+              <motion.h3
                 whileHover={{ scale: 1.05 }}
                 className="text-2xl font-bold mb-6 flex items-center"
               >
@@ -168,16 +179,16 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     initial={{ opacity: 0, scale: 0, rotate: -180 }}
                     whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ 
-                      duration: 0.8, 
+                    transition={{
+                      duration: 0.8,
                       delay: index * 0.1,
                       type: "spring",
                       stiffness: 100,
                       damping: 15
                     }}
                     viewport={{ once: true }}
-                    whileHover={{ 
-                      scale: 1.15, 
+                    whileHover={{
+                      scale: 1.15,
                       rotate: 360,
                       y: -5,
                       transition: { duration: 0.3 }
@@ -188,11 +199,11 @@ const Contact = () => {
                   >
                     {/* Effet de particules en arrière-plan */}
                     <motion.div
-                      animate={{ 
+                      animate={{
                         rotate: 360,
                         scale: [1, 1.2, 1]
                       }}
-                      transition={{ 
+                      transition={{
                         duration: 15,
                         repeat: Infinity,
                         ease: "linear"
@@ -204,11 +215,11 @@ const Contact = () => {
 
                     {/* Particules flottantes */}
                     <motion.div
-                      animate={{ 
+                      animate={{
                         y: [-2, 2, -2],
                         x: [-1, 1, -1]
                       }}
-                      transition={{ 
+                      transition={{
                         duration: 2,
                         repeat: Infinity,
                         ease: "easeInOut"
@@ -227,76 +238,76 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="card p-8"
+            className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-xl"
           >
-            <h3 className="text-2xl font-bold mb-6">Envoyez-moi un message</h3>
+            <h3 className="text-2xl font-bold mb-6 text-white">Envoyez-moi un message</h3>
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="firstName" className="label-dark">
                     Prénom
                   </label>
                   <input
                     type="text"
                     id="firstName"
                     name="firstName"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                    className="input-dark"
                     placeholder="Votre prénom"
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="lastName" className="label-dark">
                     Nom
                   </label>
                   <input
                     type="text"
                     id="lastName"
                     name="lastName"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                    className="input-dark"
                     placeholder="Votre nom"
                   />
                 </div>
               </div>
-              
+
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="email" className="label-dark">
                   Email
                 </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                  className="input-dark"
                   placeholder="votre@email.com"
                 />
               </div>
-              
+
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="subject" className="label-dark">
                   Sujet
                 </label>
                 <input
                   type="text"
                   id="subject"
                   name="subject"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
+                  className="input-dark"
                   placeholder="Sujet de votre message"
                 />
               </div>
-              
+
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="message" className="label-dark">
                   Message
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none"
+                  className="input-dark resize-none"
                   placeholder="Votre message..."
                 ></textarea>
               </div>
-              
+
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.02 }}

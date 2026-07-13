@@ -25,34 +25,58 @@ export const skills: Skill[] = [
   { id: 'javascript', name: 'JavaScript', level: 5, category: 'frontend' },
   { id: 'html', name: 'HTML5', level: 5, category: 'frontend' },
   { id: 'css', name: 'CSS3', level: 5, category: 'frontend' },
-  
+
   // Backend
   { id: 'nodejs', name: 'Node.js', level: 4, category: 'backend' },
   { id: 'express', name: 'Express.js', level: 4, category: 'backend' },
   { id: 'python', name: 'Python', level: 3, category: 'backend' },
   { id: 'php', name: 'PHP', level: 4, category: 'backend' },
   { id: 'laravel', name: 'Laravel', level: 4, category: 'backend' },
-  
+
   // Mobile
   { id: 'react-native', name: 'React Native', level: 4, category: 'mobile' },
   { id: 'flutter', name: 'Flutter', level: 3, category: 'mobile' },
-  
+
   // Databases
   { id: 'mongodb', name: 'MongoDB', level: 4, category: 'backend' },
   { id: 'mysql', name: 'MySQL', level: 4, category: 'backend' },
   { id: 'postgresql', name: 'PostgreSQL', level: 3, category: 'backend' },
-  
+
   // DevOps
   { id: 'git', name: 'Git', level: 5, category: 'devops' },
   { id: 'docker', name: 'Docker', level: 3, category: 'devops' },
   { id: 'aws', name: 'AWS', level: 3, category: 'devops' },
-  
+
   // Design
   { id: 'figma', name: 'Figma', level: 4, category: 'design' },
   { id: 'adobe-xd', name: 'Adobe XD', level: 3, category: 'design' },
 ]
 
 export const certifications: Certification[] = [
+  {
+    id: 'freecodecamp-backend',
+    title: 'Back End Development and APIs',
+    issuer: 'freeCodeCamp',
+    date: '2026-04-29',
+    url: 'https://freecodecamp.org/certification/sidney-jordan-yao-bindedou/back-end-development-and-apis',
+    image: '/images/certifications/freecodecamp.png'
+  },
+  {
+    id: 'meta-frontend',
+    title: 'Meta Front-End Developer',
+    issuer: 'Meta (Coursera)',
+    date: '2025-06-20',
+    url: 'https://coursera.org/verify/professional-cert/V4YMOPRHC38U',
+    image: '/images/certifications/meta.png'
+  },
+  {
+    id: 'ibm-generative-ai',
+    title: 'Generative AI: Prompt Engineering Basics',
+    issuer: 'IBM (Coursera)',
+    date: '2026-02-11',
+    url: 'https://coursera.org/verify/DEHSS463452D',
+    image: '/images/certifications/ibm.png'
+  },
   {
     id: 'google-play-it-safe',
     title: 'Play It Safe: Manage Security Risks',
@@ -85,22 +109,6 @@ export const certifications: Certification[] = [
     url: 'https://academy.hubspot.com/',
     image: '/images/certifications/marketing.png'
   },
-  {
-    id: 'google-mobile-development',
-    title: 'Mobile Development with Flutter',
-    issuer: 'Google Developers',
-    date: '2023-09-20',
-    url: 'https://developers.google.com/',
-    image: '/images/certifications/google-mobile.png'
-  },
-  {
-    id: 'harvard-entrepreneurship',
-    title: 'Entrepreneurship and Business Strategy',
-    issuer: 'Harvard Business School',
-    date: '2023-08-15',
-    url: 'https://www.hbs.edu/',
-    image: '/images/certifications/harvard-entrepreneurship.png'
-  }
 ]
 
 

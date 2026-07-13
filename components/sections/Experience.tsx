@@ -2,253 +2,231 @@
 
 import { motion } from 'framer-motion'
 import { experiences } from '@/data/experience'
-import { formatDate, formatDateShort } from '@/lib/utils'
-import { Trophy, Code, Users, Briefcase, GraduationCap, Award, Target, Zap, Star, Rocket, Globe, Brain } from 'lucide-react'
+import { formatDate } from '@/lib/utils'
+
+/* ── Badge type ── */
+const typeConfig: Record<string, { label: string }> = {
+  work: { label: 'Poste' },
+  hackathon: { label: 'Hackathon' },
+  competition: { label: 'Concours' },
+  project: { label: 'Projet' },
+  education: { label: 'Formation' },
+}
+
+/* ── Ordre chronologique + tri par importance ── */
+const ordered = [...experiences].sort(
+  (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+)
 
 const Experience = () => {
-  const getIcon = (type: string) => {
-    switch (type) {
-      case 'competition': return Trophy
-      case 'hackathon': return Code
-      case 'project': return Users
-      case 'work': return Briefcase
-      case 'education': return GraduationCap
-      default: return Briefcase
-    }
-  }
-
-  const getTypeLabel = (type: string) => {
-    switch (type) {
-      case 'competition': return 'Concours'
-      case 'hackathon': return 'Hackathon'
-      case 'project': return 'Projet'
-      case 'work': return 'Travail'
-      case 'education': return 'Formation'
-      default: return 'Autre'
-    }
-  }
-
   return (
     <section id="experience" className="section-padding bg-transparent">
       <div className="container-custom">
+
+        {/* ── Titre ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.9 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-24"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Expériences & Réalisations</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Mon parcours entrepreneurial, mes participations aux hackathons et mes collaborations professionnelles
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#4a7fa5] mb-4">
+            Mon histoire
+          </p>
+          <h2 className="section-title mb-6">
+            Expériences &{' '}
+            <span
+              className="relative inline-block px-3 py-1 rounded-sm font-bold text-white"
+              style={{ backgroundColor: '#4a7fa5' }}
+            >
+              Réalisations
+            </span>
+          </h2>
+          <p className="section-subtitle mx-auto">
+            Mon parcours entrepreneurial, mes participations aux hackathons et mes collaborations
           </p>
         </motion.div>
 
-        {/* Leadership & Entrepreneuriat */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h3 className="text-2xl font-bold text-center mb-12 gradient-text">🏢 Leadership & Entrepreneuriat</h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            {experiences.filter(exp => exp.type === 'work').map((exp, index) => (
-              <motion.div
-                key={exp.id}
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.2,
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15
-                }}
-                whileHover={{ 
-                  y: -10,
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
-                viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-500"
-              >
-                {/* Effet de particules en arrière-plan */}
+        {/* ══════════════════════════════════════
+            TIMELINE
+        ══════════════════════════════════════ */}
+        <div className="relative">
+
+          {/* Ligne centrale verticale */}
+          <motion.div
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            transition={{ duration: 1.5, ease: 'easeInOut' }}
+            viewport={{ once: true }}
+            className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#4a7fa5]/80 via-[#4a7fa5]/40 to-transparent origin-top hidden md:block"
+          />
+
+          {/* Ligne mobile (gauche) */}
+          <motion.div
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            transition={{ duration: 1.5, ease: 'easeInOut' }}
+            viewport={{ once: true }}
+            className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#4a7fa5]/80 via-[#4a7fa5]/40 to-transparent origin-top md:hidden"
+          />
+
+          <div className="space-y-12">
+            {ordered.map((exp, index) => {
+              const isLeft = index % 2 === 0  /* Alterne gauche / droite sur desktop */
+              const year = new Date(exp.startDate).getFullYear()
+
+              return (
                 <motion.div
-                  animate={{ 
-                    rotate: 360,
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{ 
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100"
-                />
+                  key={exp.id}
+                  initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.7, delay: index * 0.06, type: 'spring', stiffness: 90 }}
+                  viewport={{ once: true }}
+                  className={`relative flex items-start gap-8 ${isLeft
+                      ? 'md:flex-row-reverse md:text-right'
+                      : 'md:flex-row md:text-left'
+                    } flex-row pl-16 md:pl-0`}
+                >
 
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-accent-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center">
-                      <motion.div 
-                        whileHover={{ rotate: 360 }}
-                        transition={{ duration: 0.6 }}
-                        className="w-14 h-14 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl flex items-center justify-center mr-4 shadow-lg"
-                      >
-                        <Briefcase size={20} className="text-white" />
-                      </motion.div>
-                      <div>
-                        <h4 className="font-bold text-lg group-hover:text-primary-600 transition-colors">{exp.title}</h4>
-                        <p className="text-primary-600 font-medium">{exp.company}</p>
+                  {/* ── Point central + année ── */}
+                  <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-5 flex flex-col items-center gap-1 z-10">
+                    {/* Cercle */}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ duration: 0.4, delay: index * 0.06 + 0.2 }}
+                      viewport={{ once: true }}
+                      className="w-4 h-4 rounded-full border-2 border-[#4a7fa5] bg-[#0a0a0f]"
+                      style={{ boxShadow: '0 0 10px rgba(74,127,165,0.5)' }}
+                    />
+                    {/* Année */}
+                    <span className="text-[10px] font-bold text-[#4a7fa5] hidden md:block whitespace-nowrap">
+                      {year}
+                    </span>
+                  </div>
+
+                  {/* ── Spacer centre (desktop) ── */}
+                  <div className="hidden md:block md:w-1/2 flex-shrink-0" />
+
+                  {/* ── Card ── */}
+                  <motion.div
+                    whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                    className="group w-full md:w-[calc(50%-3rem)] flex-shrink-0"
+                  >
+                    <div
+                      className="relative rounded-2xl p-6 transition-all duration-300"
+                      style={{
+                        backgroundColor: '#0f1117',
+                        border: '1px solid #1e2530',
+                      }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(74,127,165,0.4)'
+                          ; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 0 30px rgba(74,127,165,0.08)'
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLDivElement).style.borderColor = '#1e2530'
+                          ; (e.currentTarget as HTMLDivElement).style.boxShadow = 'none'
+                      }}
+                    >
+                      {/* Année mobile */}
+                      <span className="text-[10px] font-bold text-[#4a7fa5] mb-2 block md:hidden">
+                        {year}
+                      </span>
+
+                      {/* Header */}
+                      <div className={`flex items-start gap-3 mb-4 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
+                        <div className="flex-1">
+                          {/* Badge type */}
+                          <span
+                            className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded border mb-2 inline-block"
+                            style={{
+                              color: 'rgba(255,255,255,0.4)',
+                              borderColor: 'rgba(255,255,255,0.1)',
+                              backgroundColor: 'rgba(255,255,255,0.03)',
+                            }}
+                          >
+                            {typeConfig[exp.type]?.label}
+                          </span>
+
+                          <h4 className="text-base font-bold text-white leading-snug group-hover:text-[#6b9fc4] transition-colors">
+                            {exp.title}
+                          </h4>
+                          <p className="text-[#4a7fa5] text-sm font-medium mt-0.5">
+                            {exp.company}
+                          </p>
+                        </div>
+
+                        {/* Status pill */}
+                        <span
+                          className="flex-shrink-0 text-[10px] font-semibold px-2 py-1 rounded-full mt-1"
+                          style={{
+                            backgroundColor: exp.current
+                              ? 'rgba(74,127,165,0.15)'
+                              : 'rgba(255,255,255,0.05)',
+                            color: exp.current ? '#6b9fc4' : 'rgba(255,255,255,0.3)',
+                            border: exp.current
+                              ? '1px solid rgba(74,127,165,0.3)'
+                              : '1px solid rgba(255,255,255,0.08)',
+                          }}
+                        >
+                          {exp.current ? 'En cours' : 'Terminé'}
+                        </span>
                       </div>
-                    </div>
-                    <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">
-                      {exp.current ? 'En cours' : 'Terminé'}
-                    </span>
-                  </div>
-                  
-                  <div className="mb-4">
-                    <p className="text-gray-400 text-sm mb-2">{formatDate(exp.startDate)} - {exp.endDate ? formatDate(exp.endDate) : 'Présent'}</p>
-                    <p className="text-gray-700">{exp.description}</p>
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies?.slice(0, 3).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-primary-100 text-primary-700 text-xs rounded-md"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
 
-        {/* Hackathons & Concours */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h3 className="text-2xl font-bold text-center mb-12 gradient-text">🏆 Hackathons & Concours</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {experiences.filter(exp => exp.type === 'hackathon' || exp.type === 'competition').map((exp, index) => (
-              <motion.div
-                key={exp.id}
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 100
-                }}
-                whileHover={{ 
-                  scale: 1.05,
-                  transition: { duration: 0.2 }
-                }}
-                viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md shadow-xl hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] transition-all duration-300 border border-white/20"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-accent-500/5 to-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-accent-500 to-primary-500 rounded-full flex items-center justify-center mr-4">
-                      <Trophy size={20} className="text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg group-hover:text-accent-600 transition-colors">{exp.title}</h4>
-                      <p className="text-accent-600 font-medium text-sm">{exp.company}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="mb-4">
-                    <p className="text-gray-400 text-sm mb-2">{formatDate(exp.startDate)}</p>
-                    <p className="text-gray-700 text-sm">{exp.description}</p>
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="px-2 py-1 bg-accent-100 text-accent-800 text-xs rounded-full">
-                      {getTypeLabel(exp.type)}
-                    </span>
-                    <span className="text-sm font-medium text-green-600">
-                      Participé
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                      {/* Dates */}
+                      <p className="text-xs text-gray-600 mb-3">
+                        {formatDate(exp.startDate)} — {exp.endDate ? formatDate(exp.endDate) : 'Présent'}
+                      </p>
 
-        {/* Collaborations professionnelles */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h3 className="text-2xl font-bold text-center mb-12 gradient-text">🤝 Collaborations professionnelles</h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            {experiences.filter(exp => exp.type === 'project').map((exp, index) => (
-              <motion.div
-                key={exp.id}
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 100
-                }}
-                whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.2 }
-                }}
-                viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md shadow-xl hover:shadow-[0_0_40px_rgba(59,130,246,0.3)] transition-all duration-300 border border-white/20"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mr-4">
-                      <Users size={20} className="text-white" />
+                      {/* Description */}
+                      <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                        {exp.description}
+                      </p>
+
+                      {/* Tech tags */}
+                      {exp.technologies && exp.technologies.length > 0 && (
+                        <div className={`flex flex-wrap gap-1.5 ${isLeft ? 'md:justify-end' : ''}`}>
+                          {exp.technologies.slice(0, 4).map(tech => (
+                            <span
+                              key={tech}
+                              className="text-[10px] px-2 py-0.5 rounded text-gray-500"
+                              style={{
+                                backgroundColor: 'rgba(255,255,255,0.04)',
+                                border: '1px solid rgba(255,255,255,0.07)',
+                              }}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                    <div>
-                      <h4 className="font-bold text-lg group-hover:text-purple-600 transition-colors">{exp.title}</h4>
-                      <p className="text-purple-600 font-medium">{exp.company}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="mb-4">
-                    <p className="text-gray-400 text-sm mb-2">{formatDate(exp.startDate)} - {exp.endDate ? formatDate(exp.endDate) : 'Présent'}</p>
-                    <p className="text-gray-700">{exp.description}</p>
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies?.slice(0, 3).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-md"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                  </motion.div>
+
+                </motion.div>
+              )
+            })}
           </div>
-        </motion.div>
+
+          {/* Fin de timeline */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="relative flex justify-center mt-12"
+          >
+            <div
+              className="w-3 h-3 rounded-full"
+              style={{
+                backgroundColor: '#4a7fa5',
+                boxShadow: '0 0 16px rgba(74,127,165,0.6)',
+              }}
+            />
+          </motion.div>
+
+        </div>
       </div>
     </section>
   )

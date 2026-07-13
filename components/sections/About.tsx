@@ -2,213 +2,201 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { User, Lightbulb, Target, Award, BookOpen, Brain } from 'lucide-react'
+
+/* ── Domaines d'expertise — colonne droite ── */
+const domains = [
+  {
+    category: 'Développement',
+    items: ['React / Next.js', 'Flutter & Dart', 'Node.js / Laravel', 'UI/UX & Design'],
+  },
+  {
+    category: 'Entrepreneuriat',
+    items: ['Soutrali Deals', 'ChapeChapeRésidence', 'Onloutou', 'Djorcy'],
+  },
+  {
+    category: 'Think Tank & IA',
+    items: ['Terrain Futur', 'Abakoun AI', 'Souveraineté numérique', 'Prospective africaine'],
+  },
+]
 
 const About = () => {
   return (
-    <section id="about" className="section-padding bg-transparent">
+    <section id="about" className="section-padding" style={{ backgroundColor: '#070d18' }}>
       <div className="container-custom">
+
+        {/* ── Titre ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">À propos de moi</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Découvrez mon parcours, ma philosophie et ma vision du développement
+          <p className="text-sm font-semibold uppercase tracking-widest text-gray-500 mb-4">
+            Qui suis-je
           </p>
+          <h2 className="section-title mb-6">
+            À propos{' '}
+            <span
+              className="relative inline-block px-3 py-1 rounded-sm font-bold text-white"
+              style={{ backgroundColor: '#4a7fa5' }}
+            >
+              de moi
+            </span>
+          </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* ══════════════════════════════════════
+            LAYOUT 3 COLONNES — inspiré capture 2
+            [ Photo ] [ Pitch texte ] [ Domaines ]
+        ══════════════════════════════════════ */}
+        <div className="grid lg:grid-cols-[1fr_1.4fr_1fr] gap-12 items-start">
+
+          {/* ── COL 1 — Photo ── */}
           <motion.div
-            initial={{ opacity: 0, x: -50, scale: 0.9 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{
-              duration: 1.2,
-              type: "spring",
-              stiffness: 100,
-              damping: 15
-            }}
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, type: 'spring', stiffness: 80 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative lg:sticky lg:top-28"
           >
-            {/* Photo avec effet glassmorphism */}
-            <motion.div
-              whileHover={{
-                scale: 1.05,
-                rotateY: 5,
-                transition: { duration: 0.4 }
-              }}
-              className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl border border-white/30 shadow-2xl"
-            >
-              <div className="relative w-full h-96">
-                <Image
-                  src="/images/hero/hero-bg.png"
-                  alt="Sir Sidney Jordan - Photo de profil"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                {/* Overlay gradient au hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-500/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-              </div>
+            {/* Glow subtil */}
+            <div
+              className="absolute -bottom-8 -left-8 w-56 h-56 rounded-full blur-[80px] -z-10 pointer-events-none"
+              style={{ backgroundColor: 'rgba(74,127,165,0.12)' }}
+            />
 
-              {/* Particules flottantes */}
-              <motion.div
-                animate={{
-                  y: [-10, 10, -10],
-                  x: [-5, 5, -5]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute top-4 right-4 w-3 h-3 bg-primary-400 rounded-full opacity-60"
+            <div className="relative overflow-hidden rounded-3xl bg-[#0f1117]"
+              style={{ border: '1px solid #1e2530' }}>
+              <Image
+                src="/images/hero/about.png"
+                alt="Sir Sidney Jordan"
+                width={480}
+                height={600}
+                className="w-full h-auto object-cover object-top"
+                priority
+                style={{ filter: 'contrast(1.05) brightness(0.9)' }}
               />
-              <motion.div
-                animate={{
-                  y: [10, -10, 10],
-                  x: [5, -5, 5]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-                className="absolute bottom-4 left-4 w-2 h-2 bg-accent-400 rounded-full opacity-60"
-              />
-            </motion.div>
+              {/* Fade bas */}
+              <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#070d18] to-transparent" />
 
-            {/* Citation avec logo */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="mt-8"
-            >
+              {/* Badge bas */}
               <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="glass-card p-6 relative overflow-hidden group"
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                viewport={{ once: true }}
+                className="absolute bottom-5 left-5 right-5 rounded-xl px-4 py-3"
+                style={{
+                  backgroundColor: 'rgba(10,14,24,0.85)',
+                  backdropFilter: 'blur(12px)',
+                  border: '1px solid rgba(255,255,255,0.07)',
+                }}
               >
-                {/* Glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="relative">
-                  <Image
-                    src="/images/logo/logo-citation.png"
-                    alt="Sir Sidney Jordan - Citation & Logo"
-                    width={600}
-                    height={300}
-                    className="w-full h-auto"
-                    priority
-                  />
-                </div>
+                <p className="text-white font-bold text-sm">Sir Sidney Jordan</p>
+                <p className="text-gray-500 text-xs mt-0.5">Côte d'Ivoire · Remote</p>
               </motion.div>
-            </motion.div>
+            </div>
           </motion.div>
 
+          {/* ── COL 2 — Pitch texte (centre) ── */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.1 }}
             viewport={{ once: true }}
             className="space-y-8"
           >
-            {/* Mon parcours */}
-            <motion.div
-              whileHover={{
-                scale: 1.02,
-                transition: { duration: 0.3 }
-              }}
-              className="group relative overflow-hidden rounded-2xl bg-white/15 backdrop-blur-md border border-white/30 p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative flex items-start space-x-4">
-                <motion.div
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                  className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg"
-                >
-                  <User className="w-6 h-6 text-white" />
-                </motion.div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-3 text-gray-400 group-hover:text-blue-600 transition-colors">Mon parcours</h3>
-                  <p className="text-gray-400 leading-relaxed mb-4">
-                    Passionné par la technologie, la philosophie et l'étude des comportements humains, j'ai construit mon parcours à la croisée des mondes : du développement web et mobile à la sécurité réseau, de la gestion de projets digitaux à la création d'entreprises tech.
-                  </p>
-                  <p className="text-gray-400 leading-relaxed">
-                    Co-fondateur et CEO/COO de <strong>Soutrali Deals</strong>, CTO de <strong>Onloutou</strong>, et co-fondateur de <strong>ChapeChapeRésidence</strong>, fondateur de <strong>Terrain Futur think tank</strong>, j'ai également participé à plusieurs hackathons (Orange Fab, Pejedec/CIPME, Google Habihack, etc.), tout en menant des projets de réflexion stratégique et technologique comme <strong>Terrain Futur</strong> (think tank) et <strong>Abakoun</strong> (souveraineté intellectuelle africaine).
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+            {/* Pitch principal */}
+            <div>
+              <p className="text-2xl md:text-3xl font-light text-white leading-relaxed">
+                Je suis un développeur full-stack passionné par la technologie,
+                la philosophie et l'étude des comportements humains.
+              </p>
+            </div>
 
-            {/* Ma philosophie */}
-            <motion.div
-              whileHover={{
-                scale: 1.02,
-                transition: { duration: 0.3 }
-              }}
-              className="group relative overflow-hidden rounded-2xl bg-white/15 backdrop-blur-md border border-white/30 p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative flex items-start space-x-4">
-                <motion.div
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                  className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-xl flex items-center justify-center shadow-lg"
-                >
-                  <Lightbulb className="w-6 h-6 text-white" />
-                </motion.div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-3 text-gray-400 group-hover:text-green-600 transition-colors">Ma philosophie</h3>
-                  <p className="text-gray-400 leading-relaxed mb-4">
-                    Je crois que la technologie doit servir l'humain et non l'inverse. Chaque ligne de code, chaque design, chaque projet est une tentative d'apporter un sens, de transformer l'informel en formel, et de créer des ponts entre savoir, innovation et société.
-                  </p>
-                  <p className="text-gray-400 leading-relaxed">
-                    Mon approche repose sur l'idée que l'interdisciplinarité (informatique, philosophie, psychologie, histoire, géopolitique) est une clé pour bâtir un futur plus équilibré.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+            {/* Séparateur */}
+            <div className="h-px w-12" style={{ backgroundColor: 'rgba(255,255,255,0.15)' }} />
 
-            {/* Ma vision */}
-            <motion.div
-              whileHover={{
-                scale: 1.02,
-                transition: { duration: 0.3 }
-              }}
-              className="group relative overflow-hidden rounded-2xl bg-white/15 backdrop-blur-md border border-white/30 p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="relative flex items-start space-x-4">
-                <motion.div
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                  className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center shadow-lg"
-                >
-                  <Target className="w-6 h-6 text-white" />
-                </motion.div>
-                <div>
-                  <h3 className="text-2xl font-bold mb-3 text-gray-400 group-hover:text-orange-600 transition-colors">Ma vision</h3>
-                  <p className="text-gray-400 leading-relaxed mb-4">
-                    Mon ambition est de bâtir un écosystème numérique africain qui valorise nos talents, digitalise l'informel et crée des emplois durables. À travers Soutrali Deals, Yaoo, et d'autres projets, je veux contribuer à :
-                  </p>
-                  <ul className="text-gray-400 leading-relaxed space-y-2">
-                    <li>• Transformer les métiers artisanaux et informels grâce à la digitalisation</li>
-                    <li>• Créer des écoles techniques pour revaloriser les savoir-faire locaux</li>
-                    <li>• Développer une souveraineté intellectuelle africaine via Abakoun et l'IA</li>
-                    <li>• Construire "Le Nexus Africain" - la Forge des Savoirs, un écosystème où les talents africains transforment l'informel en puissance technologique et intellectuelle</li>
-                  </ul>
-                </div>
-              </div>
-            </motion.div>
+            {/* Corps */}
+            <div className="space-y-5">
+              <p className="text-gray-400 leading-relaxed">
+                J'ai construit mon parcours à la croisée des mondes — du développement web et mobile
+                à la sécurité réseau, de la gestion de projets digitaux à la création d'entreprises tech.
+                Co-fondateur et CEO/COO de Soutrali Deals, CTO de Onloutou et ChapeChapeRésidence.
+              </p>
+
+              <p className="text-gray-400 leading-relaxed">
+                Je crois que la technologie doit servir l'humain. Chaque ligne de code est une tentative
+                de transformer l'informel en formel, de créer des ponts entre savoir, innovation et société.
+                L'interdisciplinarité est ma méthode.
+              </p>
+
+              <p className="text-gray-400 leading-relaxed">
+                Mon ambition : bâtir un écosystème numérique africain qui valorise nos talents,
+                digitalise l'informel et construit une souveraineté intellectuelle durable à travers
+                Terrain Futur et Abakoun.
+              </p>
+            </div>
+
+            {/* Séparateur bas */}
+            <div className="h-px" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }} />
+
+            {/* Méta */}
+            <div className="flex flex-wrap gap-6 text-sm text-gray-600">
+              <span>Basé à Côte d'Ivoire</span>
+              <span>·</span>
+              <span>Disponible Remote</span>
+              <span>·</span>
+              <span>5+ ans d'expérience</span>
+            </div>
           </motion.div>
+
+          {/* ── COL 3 — Domaines (droite) ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.2, type: 'spring', stiffness: 80 }}
+            viewport={{ once: true }}
+            className="space-y-8 lg:sticky lg:top-28"
+          >
+            {domains.map((domain, dIdx) => (
+              <motion.div
+                key={domain.category}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: dIdx * 0.12 }}
+                viewport={{ once: true }}
+              >
+                {/* Label catégorie */}
+                <p className="text-xs font-bold uppercase tracking-widest text-gray-600 mb-3">
+                  {domain.category}
+                </p>
+
+                {/* Items */}
+                <ul className="space-y-2">
+                  {domain.items.map((item, iIdx) => (
+                    <motion.li
+                      key={item}
+                      initial={{ opacity: 0, x: 10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.4, delay: dIdx * 0.12 + iIdx * 0.05 }}
+                      viewport={{ once: true }}
+                      className="text-gray-300 text-sm hover:text-white transition-colors duration-200 cursor-default"
+                    >
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+
+                {/* Séparateur entre catégories */}
+                {dIdx < domains.length - 1 && (
+                  <div className="mt-8 h-px" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }} />
+                )}
+              </motion.div>
+            ))}
+          </motion.div>
+
         </div>
       </div>
     </section>
@@ -216,4 +204,3 @@ const About = () => {
 }
 
 export default About
-

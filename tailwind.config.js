@@ -8,41 +8,44 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Bleu acier — couleur primaire
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
-          950: '#172554',
+          50: '#eef4f9',
+          100: '#d5e6f0',
+          200: '#aacce1',
+          300: '#7ab0ce',
+          400: '#5595bc',
+          500: '#4a7fa5', // bleu acier principal
+          600: '#3a6a8a',
+          700: '#2d5470',
+          800: '#1f3d54',
+          900: '#12273a',
+          950: '#091520',
         },
+        // Bleu acier clair — accents secondaires
         accent: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          50: '#f0f6fb',
+          100: '#d8ebf5',
+          200: '#b0d5eb',
+          300: '#83bada',
+          400: '#6b9fc4', // bleu acier clair
+          500: '#4f88b0',
+          600: '#3b7096',
+          700: '#2c587a',
+          800: '#1d3f5b',
+          900: '#0f293e',
         },
-        // Premium Dark Theme Colors
+        // Dark theme
         dark: {
-          bg: '#030014', // Deep space blue/black
-          card: '#0f172a',
-          border: '#1e293b',
+          bg: '#0a0a0f', // noir profond
+          card: '#0f1117', // cards
+          border: '#1e2530', // bordures subtiles
         },
-        neon: {
-          blue: '#2DD4BF',
-          purple: '#A855F7',
-          pink: '#EC4899',
+        // Steel accents
+        steel: {
+          light: '#6b9fc4',
+          mid: '#4a7fa5',
+          dark: '#2d5f82',
         }
       },
       fontFamily: {

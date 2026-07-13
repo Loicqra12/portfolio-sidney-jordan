@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
     category: 'philosophy',
     readTime: 8,
     featured: true,
-    image: '/images/blog/ethics-tech.jpg',
+    image: 'https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=80',
     slug: 'ethique-developpement-reflexion'
   },
   {
@@ -40,7 +40,7 @@ export const blogPosts: BlogPost[] = [
     category: 'psychology',
     readTime: 12,
     featured: true,
-    image: '/images/blog/psychology-ux.jpg',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
     slug: 'psychologie-utilisateur-conception'
   },
   {
@@ -54,7 +54,7 @@ export const blogPosts: BlogPost[] = [
     category: 'geopolitics',
     readTime: 15,
     featured: true,
-    image: '/images/blog/geopolitics-tech.jpg',
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
     slug: 'impact-geopolitique-souverainete-numerique'
   },
   {
@@ -68,7 +68,7 @@ export const blogPosts: BlogPost[] = [
     category: 'technology',
     readTime: 10,
     featured: true,
-    image: '/images/blog/future-web-dev.jpg',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
     slug: 'avenir-developpement-web-tendances'
   },
   {
@@ -82,7 +82,7 @@ export const blogPosts: BlogPost[] = [
     category: 'personal',
     readTime: 14,
     featured: true,
-    image: '/images/blog/african-entrepreneurship.jpg',
+    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80',
     slug: 'entrepreneuriat-africain-numerique'
   },
   {
@@ -96,7 +96,7 @@ export const blogPosts: BlogPost[] = [
     category: 'technology',
     readTime: 11,
     featured: true,
-    image: '/images/blog/cybersecurity-africa.jpg',
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80',
     slug: 'cybersecurite-afrique-defis-opportunites'
   },
   {
@@ -110,7 +110,7 @@ export const blogPosts: BlogPost[] = [
     category: 'philosophy',
     readTime: 13,
     featured: true,
-    image: '/images/blog/ai-ethics-africa.jpg',
+    image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80',
     slug: 'intelligence-artificielle-ethique-afrique'
   },
   {
@@ -124,7 +124,7 @@ export const blogPosts: BlogPost[] = [
     category: 'technology',
     readTime: 16,
     featured: true,
-    image: '/images/blog/blockchain-africa.jpg',
+    image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80',
     slug: 'blockchain-transformation-digitale-afrique'
   }
 ]
