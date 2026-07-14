@@ -5,19 +5,19 @@ import Image from 'next/image'
 
 /* 3 rangées — alternance gros / petit / gros */
 const row1 = [
-  { src: '/images/companies/partner1.png', alt: 'Partner 1', size: 'large' },
-  { src: '/images/companies/partner2.png', alt: 'Partner 2', size: 'small' },
-  { src: '/images/companies/partner3.png', alt: 'Partner 3', size: 'large' },
+  { src: '/images/companies/partner1.png', alt: 'Partner 1', size: 'large' as const },
+  { src: '/images/companies/partner2.png', alt: 'Partner 2', size: 'small' as const },
+  { src: '/images/companies/partner3.png', alt: 'Partner 3', size: 'large' as const },
 ]
 const row2 = [
-  { src: '/images/companies/partner4.png', alt: 'Partner 4', size: 'small' },
-  { src: '/images/companies/partner5.png', alt: 'Partner 5', size: 'large' },
-  { src: '/images/companies/partner6.png', alt: 'Partner 6', size: 'small' },
+  { src: '/images/companies/partner4.png', alt: 'Partner 4', size: 'small' as const },
+  { src: '/images/companies/partner5.png', alt: 'Partner 5', size: 'large' as const },
+  { src: '/images/companies/partner6.png', alt: 'Partner 6', size: 'small' as const },
 ]
 const row3 = [
-  { src: '/images/companies/partner7.png', alt: 'Partner 7', size: 'large' },
-  { src: '/images/companies/partner8.png', alt: 'Partner 8', size: 'small' },
-  { src: '/images/companies/partner9.png', alt: 'Partner 9', size: 'large' },
+  { src: '/images/companies/partner7.png', alt: 'Partner 7', size: 'large' as const },
+  { src: '/images/companies/partner8.png', alt: 'Partner 8', size: 'small' as const },
+  { src: '/images/companies/partner9.png', alt: 'Partner 9', size: 'large' as const },
 ]
 
 const sizeMap = {
